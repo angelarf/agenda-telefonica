@@ -1,3 +1,17 @@
+
+/************************************
+ * Classe para guardar informacoes do contato
+ * nome: string
+ * telefone: string
+ */
+class Contato {
+  constructor(nome, telefone) {
+    this.nome = nome;
+    this.telefone = telefone;
+  }
+}
+
+
 const SAIR = 0
 const ADICIONAR_CONTATO = 1
 const REMOVER_CONTATO = 2
@@ -33,8 +47,10 @@ function adicionarContato() {
     }
   } while (!telefoneValido)
 
+  const novoContato = new Contato(nome, telefone);
+
   // Por enquanto, não vamos salvar, mas vamos fingir que sim :)
-  alert("Contato salvo com sucesso!\n" + nome + "\nTelefone:" + telefone)
+  alert("Contato salvo com sucesso!\n" + novoContato.nome + "\nTelefone:" + novoContato.telefone)
 }
 
 function listarContatos() {
