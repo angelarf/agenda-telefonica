@@ -1,4 +1,3 @@
-
 /************************************
  * Classe para guardar informacoes do contato
  * nome: string
@@ -6,11 +5,57 @@
  */
 class Contato {
   constructor(nome, telefone) {
-    this.nome = nome;
-    this.telefone = telefone;
+    this.nome = nome
+    this.telefone = telefone
   }
 }
 
+class Agenda {
+  adicionarContato() {
+    const nome = prompt("Insira o nome do contato:")
+    let telefoneValido = false
+    let telefone
+
+    do {
+      let telefoneInput = prompt(
+        "Insira o telefone (apenas números ex: 999999999)"
+      )
+
+      // isNaN verifica se o numero é um número mesmo!
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN
+      if (isNaN(telefoneInput)) {
+        alert("Por favor, apenas números")
+      } else {
+        telefone = parseInt(telefoneInput)
+        telefoneValido = true
+      }
+    } while (!telefoneValido)
+
+    const novoContato = new Contato(nome, telefone)
+
+    this.contato = novoContato;
+
+    alert(
+      "Contato salvo com sucesso!\n" +
+        this.contato.nome +
+        "\nTelefone:" +
+        this.contato.telefone
+    )
+  }
+
+  listarContatos() {
+    const {nome, telefone} = this.contato;
+    alert("Nome: " +  nome + "\nTelefone: " + telefone);
+  }
+
+  removerContato() {
+    alert("Método não implementado :(")
+  }
+
+  editarContato() {
+    alert("Método não implementado :(")
+  }
+}
 
 const SAIR = 0
 const ADICIONAR_CONTATO = 1
@@ -27,47 +72,8 @@ const escreveOpcoesDoMenu = () => {
           4 - Editar contato`
 }
 
-function adicionarContato() {
-  const nome = prompt("Insira o nome do contato:")
-  let telefoneValido = false
-  let telefone
-
-  do {
-    let telefoneInput = prompt(
-      "Insira o telefone (apenas números ex: 999999999)"
-    )
-    console.log()
-    // isNaN verifica se o numero é um número mesmo!
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/isNaN
-    if (isNaN(telefoneInput)) {
-      alert("Por favor, apenas números")
-    } else {
-      telefone = parseInt(telefoneInput)
-      telefoneValido = true;
-    }
-  } while (!telefoneValido)
-
-  const novoContato = new Contato(nome, telefone);
-
-  // Por enquanto, não vamos salvar, mas vamos fingir que sim :)
-  alert("Contato salvo com sucesso!\n" + novoContato.nome + "\nTelefone:" + novoContato.telefone)
-}
-
-function listarContatos() {
-  // Vamos fingir que temos os contatos salvos:
-  alert("Nome: Angela \nTelefone: 99999-9999")
-}
-
-function removerContato() {
-  alert("Método não implementado :(")
-}
-
-function editarContato() {
-  alert("Método não implementado :(")
-}
-
-
 function agendaTelefonica() {
+  const agenda = new Agenda()
   let opcao
   do {
     opcao = parseInt(
@@ -76,28 +82,27 @@ function agendaTelefonica() {
 
     switch (opcao) {
       case ADICIONAR_CONTATO:
-        adicionarContato()
-        break;
+        agenda.adicionarContato()
+        break
       case REMOVER_CONTATO:
-        removerContato()
-        break;
+        agenda.removerContato()
+        break
       case LISTAR_CONTATOS:
-        listarContatos()
-        break;
+        agenda.listarContatos()
+        break
       case EDITAR_CONTATOS:
-        editarContato()
-        break;
+        agenda.editarContato()
+        break
       case SAIR:
         alert("Até logo!")
-        break;
+        break
       default:
         alert(
           "Opção inválida! Escolha uma das opções abaixo:" +
             escreveOpcoesDoMenu()
         )
     }
-    console.log(opcao)
   } while (opcao != SAIR)
 }
 
-agendaTelefonica();
+agendaTelefonica()
