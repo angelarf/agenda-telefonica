@@ -11,6 +11,10 @@ class Contato {
 }
 
 class Agenda {
+  constructor() {
+    this.contato;
+  }
+
   adicionarContato() {
     const nome = prompt("Insira o nome do contato:")
     let telefoneValido = false
