@@ -12,7 +12,7 @@ class Contato {
 
 class Agenda {
   constructor() {
-    this.contato;
+    this.contatos = [];
   }
 
   adicionarContato() {
@@ -36,24 +36,24 @@ class Agenda {
     } while (!telefoneValido)
 
     const novoContato = new Contato(nome, telefone)
-
-    this.contato = novoContato;
+    this.contatos.push(novoContato);
 
     alert(
       "Contato salvo com sucesso!\n" +
-        this.contato.nome +
-        "\nTelefone:" +
-        this.contato.telefone
+      novoContato.nome +
+      "\nTelefone:" +
+      novoContato.telefone
     )
   }
 
   listarContatos() {
-    const {nome, telefone} = this.contato;
-    alert("Nome: " +  nome + "\nTelefone: " + telefone);
+    for(let cont of this.contatos){
+      alert("Nome: " +  cont.nome + "\nTelefone: " + cont.telefone);
+    }
   }
 
-  removerContato() {
-    alert("Método não implementado :(")
+  removerContato(indice) {
+    this.contatos.splice(indice,1);
   }
 
   editarContato() {
@@ -89,7 +89,10 @@ function agendaTelefonica() {
         agenda.adicionarContato()
         break
       case REMOVER_CONTATO:
-        agenda.removerContato()
+        let indice = parseInt(
+          prompt("Digite a posicao do elemento que vc qr apagar")
+        )
+        agenda.removerContato(indice)
         break
       case LISTAR_CONTATOS:
         agenda.listarContatos()
