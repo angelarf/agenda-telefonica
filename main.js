@@ -52,8 +52,15 @@ class Agenda {
     }
   }
 
-  removerContato(indice) {
-    this.contatos.splice(indice,1);
+  removerContato(nome) {
+    const contatoEncontrado = this.contatos.find((c) => c.nome === nome)
+    if(contatoEncontrado) {
+      const contatosFiltrados = this.contatos.filter((c) => c.nome !== nome)
+      this.contatos = contatosFiltrados;
+      alert("Contato removido da lista!")
+    } else {
+      alert("Contato nao encontrado!")
+    }
   }
 
   editarContato() {
@@ -89,10 +96,8 @@ function agendaTelefonica() {
         agenda.adicionarContato()
         break
       case REMOVER_CONTATO:
-        let indice = parseInt(
-          prompt("Digite a posicao do elemento que vc qr apagar")
-        )
-        agenda.removerContato(indice)
+       let nome = prompt("Digite o nome do contato que deseja apagar: ")
+        agenda.removerContato(nome)
         break
       case LISTAR_CONTATOS:
         agenda.listarContatos()
