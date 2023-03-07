@@ -53,9 +53,21 @@ class Agenda {
   }
 
   removerContato(nome) {
-    const contatoEncontrado = this.contatos.find((c) => c.nome === nome)
+    // A função find percorre o array de contatos e procura por um contato.nome 
+    // que seja igual ao nome recebido por parametro na função removerContato
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+    
+    // const contatoEncontrado = this.contatos.find((c) => c.nome === nome)
+
+    // A função filter percorre o array de contatos e filtra de acordo com a condição (c.nome !== nome)
+    // Essa função retorna um novo array.
+    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter
+    // Para evitar percorrer a lista duas vezes, vou usar o método filter. 
+    // Se o array retornado for vazio, significa que o contato não foi encontrado
+    const contatosFiltrados = this.contatos.filter((c) => c.nome !== nome);
+    const contatoEncontrado = contatosFiltrados.length >= 1;
+
     if(contatoEncontrado) {
-      const contatosFiltrados = this.contatos.filter((c) => c.nome !== nome)
       this.contatos = contatosFiltrados;
       alert("Contato removido da lista!")
     } else {
