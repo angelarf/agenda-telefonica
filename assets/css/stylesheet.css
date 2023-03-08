@@ -1,0 +1,59 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #FFF;
+  background-color: #000;
+}
+
+.logo img {
+  padding: 1rem;
+}
+
+.header-page-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.navbar {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  color: #000;
+  list-style: none;
+
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #000;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+.content-container section {
+  padding: 2rem 1rem;
+}
+
+.content-container section + section {
+  border-top: 1px solid #DCDCDC;
+}
+
+.contato-novo {
+  color: red;
+}

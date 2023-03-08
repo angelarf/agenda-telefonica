@@ -1,18 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="./assets/css/stylesheet.css" media="screen" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
   <title>Coder - Agenda Telefônica</title>
 </head>
+
 <body>
-  <h1>Coder - Agenda Telefônica!</h1>
-  
-  <br />
-  <br />
-  <p>Olá, bem vindo a nossa Agenda Telefônica digital</p>
-  
+  <header>
+    <div class="logo" href="#inicio">
+      <img src="./assets/img/coderhouse_logo.png" width="150" alt="logo" />
+      <span class="header-page-title">Agenda Telefônica</span>
+    </div>
+  </header>
+  <nav>
+    <ul class="navbar">
+      <li>Adicionar Contatos</li>
+      <li>Remover Contato</li>
+      <li>Ver Contatos</li>
+    </ul>
+  </nav>
+  <main class="content-container">
+    <section id="adicionar-contato">
+      <h1>Adicionar Contato</h1>
+      <form name="adicionar-contato-form">
+        <label for="input-nome">Nome:</label>
+        <input type="text" id="input-nome" />
+        
+        <label for="input-telefone">Telefone:</label>
+        <input type="text" id="input-telefone" />
+
+        <button type="submit" onclick="adicionarContato()">Salvar</button>
+
+      </form>
+    </section>
+
+
+    <section id="remover-contato">
+      <h1>Remover Contato</h1>
+      # TODO
+    </section>
+
+
+    <section id="listar-contato" >
+      <h1>Lista de Contato</h1>
+      <ul id="lista-contatos"></ul>
+      <button type="button" onclick="atualizarListaHTML()">Atualizar Lista</button>
+    </section> 
+  </main>
+
   <script src="main.js"></script>
 </body>
+
 </html>
