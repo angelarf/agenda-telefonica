@@ -21,8 +21,8 @@ class Agenda {
   }
 
   listarContatos() {
-    for(let cont of this.contatos){
-      alert("Nome: " +  cont.nome + "\nTelefone: " + cont.telefone);
+    for (let cont of this.contatos) {
+      alert("Nome: " + cont.nome + "\nTelefone: " + cont.telefone)
     }
   }
 
@@ -61,35 +61,45 @@ const agenda = agendaTelefonica()
 // agenda.adicionarContato("Contato 1", "(11) 9999-9999");
 // agenda.adicionarContato("Contato 2", "(11) 9999-9998");
 
-
 const atualizarListaHTML = () => {
-  const listaEl = document.getElementById("lista-contatos");
-  listaEl.innerHTML = "";
-  
-  const contatos = agenda.contatos;
+  const listaEl = document.getElementById("lista-contatos")
+  listaEl.innerHTML = ""
+
+  const contatos = agenda.contatos
 
   if (contatos.length === 0) {
-    listaEl.innerText = "Lista Vazia :(";
-    return;
+    listaEl.innerText = "Lista Vazia :("
+    return
   }
 
-  contatos.forEach(contato => {
-    const itemEl = document.createElement("li");
-    itemEl.innerText = `${contato.nome} - ${contato.telefone}`;
-    itemEl.className = "contato-novo";
-    listaEl.appendChild(itemEl);
-  });
+  contatos.forEach((contato) => {
+    const itemEl = document.createElement("li")
+    itemEl.innerText = `${contato.nome} - ${contato.telefone}`
+    itemEl.className = "contato-novo"
+    listaEl.appendChild(itemEl)
+  })
 }
+
+const limparForm = () => {
+  document.querySelector("#input-nome").value = ""
+  document.querySelector("#input-telefone").value = ""
+}
+
 // Executa a função assim que o javascript é carregado ;)
-atualizarListaHTML();
+atualizarListaHTML()
 
-const adicionarContato = () => {
-  const nome = document.querySelector("#input-nome").value;
-  const telefone = document.querySelector("#input-telefone").value;
 
-  // TODO: Validacoes 
+const adicionarContato = (e) => {
+  e.preventDefault();
+  const nome = document.querySelector("#input-nome").value
+  const telefone = document.querySelector("#input-telefone").value
+
+  // TODO: Validacoes
 
   agenda.adicionarContato(nome, telefone)
-  atualizarListaHTML();
-
+  atualizarListaHTML()
+  limparForm()
 }
+
+const formSalvarContato = document.getElementById("adicionar-contato-form");
+formSalvarContato.addEventListener("submit", adicionarContato)
